@@ -21,18 +21,14 @@ const CotacoesSchema = new Schema({
             },
             valorDoItem:{
               type: Number,
-              match: [/^[A-zÀ-ú0-9- ,_]+$/,  'O valor do produto, referênte a cotação, só pode conter números'],
+              match: [/^[a-zA-Z0-9- ,_]+$/,  'O valor do produto, referênte a cotação, só pode conter números'],
               require:true
+              
             },_id:false
           }],
-          tipo:{
-            type:Number,
-            match: [/^[0-9]+$/,  'O campo "Tipo", referênte a qual tipo de cesta é, só pode conter números'],
-            require:true
-          },
           valorTotal:{
             type: Number,
-            match: [/^[A-zÀ-ú0-9- ,_]+$/,  'O valor tatal dos produtos, referêntes a cotação, só pode conter números'],
+            match: [/^[a-zA-Z0-9- ,_]+$/,  'O valor tatal dos produtos, referêntes a cotação, só pode conter números'],
             require:true
           },_id:false
   },
@@ -47,9 +43,12 @@ const CotacoesSchema = new Schema({
 
   CotacoesSchema.pre('save', function(next){
     console.log(this.cesta.produto[0].valorDoItem);
+    
       this.cesta.produto.forEach(element => {
         this.cesta.valorTotal += element.valorDoItem
-    });next();
+    });
+    
+    next();
   })
 
   CotacoesSchema.pre('findOneAndUpdate', function(next) {

@@ -1,13 +1,22 @@
 const Comercios = require("../models/Comercio");
 const User = require("../models/User");
-const {menf,valida,list,adm} =require ("../auxiliar/funcoes")
+
+function menf(params) { return "Comercio com o CNPJ: "+params+" não existente!"}
+async function list(params) {if (params) { return await Comercios.find({status: true},params)}
+  return await Comercios.find({status: true},'-status')
+}
+async function adm(params) {return await User.findOne({email:params, adm:true},'_id')}
+async function valida(params,a) {const comercio = await Comercios.findOne({cnpj:params})
+if (comercio) {if (a) {return true }return comercio;}
+ if (a) {return false }return menf(params)
+}
 
 module.exports = {
 
   async store(req, res) {
    try {if (await adm(req.userEmail)) {
     const comercio = await Comercios.findOne({ cnpj:req.body.cnpj })
-    if(comercio){return res.status(400).send({ messagem: "Empresa ja cadastrada já cadastrado"})
+    if(comercio){return res.status(400).send({ menssage: "Empresa ja cadastrada já cadastrado\n "+ comercio})
     } return res.send(await Comercios.create(req.body));
     } return res.status(401).send({ erro: "Usuario sem autorização para realizar cadastro" })
   } catch (err) { 

@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken')
 module.exports = (req, res, next) => {
     const auth = req.headers.authorization;
+    
     if (!auth) {
         return res.status(400).send({ Erro: "Token não recebido " })
     }
@@ -13,7 +14,7 @@ module.exports = (req, res, next) => {
     if (!/^Bearer$/i.test(scheme)) {
         return res.status(400).send({ Erro: "Token mal formatado" })
     }
-
+    
     jwt.verify(token, "hakuna matata", (err, decoded) => {///mud "a"
         if (err) { return res.status(400).send({ Erro: "Token Invalido" }) }
         req.userEmail = decoded.params.email;
