@@ -23,7 +23,9 @@ module.exports = {
     let { email, senha } = req.body;
     let user = await User.findOne({ email }).select('+senha')
     if (!user) return res.status(406).send({ error: "Email não cadastrado" })
-    if (!senha || ! user.compareSenha(senha)) {
+    console.log(senha);
+    
+    if (!senha || ! await user.compareSenha(senha)) {
         res.status(406).send({ error: "Senha incorreta" })
     }({senha, ...user} =user._doc);
     return res.send({ user, token: token({ email: user.email })});

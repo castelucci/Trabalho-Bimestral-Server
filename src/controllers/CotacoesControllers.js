@@ -1,32 +1,24 @@
 const cotacoes = require("../models/Cotacao");
+const {campos} =require ("../auxiliar/funcoes")
 
-
-function menf(params) { return "Contação com o id: "+params+" não existente!"}
-
-async function valida(params,a) {const cotacao = await cotacoes.findOne({_id:params}).populate('user comercio')
-if (cotacao) {if (a) {return true }return cotacao;}
- if (a) {return false }return menf(params)
-}
-async function list(params) {if (params) { return await cotacoes.find({status: true},params).populate('user comercio')
-}
-  return await cotacoes.find({status: true},'-status').populate('user comercio')
+function alimentos(params,obj) { let vetor=[]
+  params.forEach(element => {
+    Array.prototype.push.apply(vetor,Object.keys(obj[element]))
+  });
+  return vetor
 }
 
 module.exports = {
   async store(req, res) {try {
+    const vetor = Object.keys(req.body.cesta.alimentos);
+    const contr=alimentos(vetor,req.body.cesta.alimentos)
+    if (contr.length==0) {throw new Error("Deve haver pelo menos um produto lançado") }
+    let a = (Object.keys(cotacoes.schema.tree).concat(Object.keys(cotacoes.schema.tree.cesta.alimentos),Object.keys(cotacoes.schema.tree.cesta.alimentos.alimento1)));
+    let b = (Object.keys(req.body).concat(vetor,contr))
+    const c = campos(b,a)
+    if (c) {throw new Error(c) }
     const cotacao = await cotacoes.create(req.body);
    return res.send(await cotacoes.findOne({_id:cotacao._id}).populate('user comercio'))
     } catch (erro) {return res.json(erro.message); 
     }},
-  async list(req, res) {return res.json(await list(req.body.campos))},
-  async index(req, res) { return res.json(await valida(req.params.id))},
-  async update(req, res) {try {const _id = req.params.id;
-      if (await valida(_id,true)){return res.json(await cotacoes.findOneAndUpdate({_id},req.body,{new:true}))}
-      return res.json(menf(_id))} catch (error) {return res.json(error.message);}
-    },
-  async destroy(req, res) { try{ const _id = req.params.id;
-    if (await valida(_id,true)) {await cotacoes.findOneAndUpdate({_id},{status:false})
-      return res.json({message: "Exclusão realizada com sucesso!"})}
-      return res.json(menf(_id))} catch (error) {return res.json(error.message);}
-  }
 };

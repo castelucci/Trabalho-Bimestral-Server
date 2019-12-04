@@ -25,7 +25,7 @@ const UserSchema = new Schema({
       select: false,
   },},{versionKey: false},{timestamps: true});
 
-  UserSchema.methods={ compareSenha(senha) {return bcrypt.compare(senha,this.senha)}}
+  UserSchema.methods={ async compareSenha(senha) {return await bcrypt.compare(senha,this.senha)}}
   
   UserSchema.pre('save', async function(next){
     this.senha = await bcrypt.hash(this.senha, 6)

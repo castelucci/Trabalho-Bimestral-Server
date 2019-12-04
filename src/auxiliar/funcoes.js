@@ -20,11 +20,11 @@ async function list(campos,model) {if (campos) { return await model.find({status
 function model(params) {return require("../models/"+params)}
 async function adm(email) {return await (model("User")).findOne({email:email, adm:true},'_id')}
 
-
-function campos(update,obj,next) { update.splice(update.indexOf('_id'), 1);
-  for (let i = 0; i < update.length; i++) {
+function campos(update,obj,next) { if (next) update.splice(update.indexOf('_id'), 1);
+for (let i = 0; i < update.length; i++) {
     if (obj.indexOf(update[i].toLowerCase()) == -1) {
-      next( new Error('Campo "'+update[i]+'" é invalido!'))
+      if (next) {next( new Error('Campo "'+update[i]+'" é invalido!'))}
+      return ('Campo "'+update[i]+'" é invalido!')
     }
   }
 }
