@@ -1,7 +1,8 @@
 const {menf,valida,list,model} =require ("../auxiliar/funcoes")
 
 module.exports = {
-  async list(req, res) {return res.json(await list(req.body.campos,model(req.params.generic)))},
+  async list(req, res) {
+  return res.json(await list(req.body.campos,model(req.params.generic),req.params.filtro))},
   async index(req, res) {return res.json(await valida(req.params.id,model(req.params.generic)))},
   async update(req, res) {try{const id=req.params.id; const modell = req.params.generic;
     if (await valida(id,model(modell),true))

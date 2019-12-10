@@ -14,8 +14,10 @@ async function valida(id,model,boolean) {model = await model.findOne({_id:id})
 if (model) {if (boolean) {return true }return model}
  if (boolean) {return false }return menf(id)
 }
-async function list(campos,model) {if (campos) { return await model.find({status: true},campos)}
-  return await model.find({status: true},'-status')
+async function list(campos,model,filtro) {if (campos) { return await model.find({status: true},campos)}
+if (filtro) {filtro = filtro.split(':')
+return await model.find({[filtro[0]]:filtro[1],status:true},'-status').populate('user','nome')}
+  return await model.find({status:true},'-status').populate('user','nome')
 }
 function model(params) {return require("../models/"+params)}
 async function adm(email) {return await (model("User")).findOne({email:email, adm:true},'_id')}
@@ -27,6 +29,9 @@ for (let i = 0; i < update.length; i++) {
       return ('Campo "'+update[i]+'" é invalido!')
     }
   }
+}
+function name(params) {
+  
 }
 
 module.exports = {validaCaracteris,menf,valida,list,model,adm,campos};

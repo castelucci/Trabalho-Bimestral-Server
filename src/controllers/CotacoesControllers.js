@@ -18,7 +18,7 @@ module.exports = {
     const c = campos(b,a)
     if (c) {throw new Error(c) }
     const cotacao = await cotacoes.create(req.body);
-   return res.send(await cotacoes.findOne({_id:cotacao._id}).populate('user comercio'))
+   return res.send(await cotacoes.findOne({_id:cotacao._id},"-status").populate('user','nome -_id'))
     } catch (erro) {return res.json(erro.message); 
     }},
 };

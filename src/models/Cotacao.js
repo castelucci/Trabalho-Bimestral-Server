@@ -22,7 +22,7 @@ const CotacoesSchema = new Schema({
   },
   cesta: {
     alimentos: {
-      alimento1: 
+      alimento1:
       {
         nome: {
           type: String,
@@ -31,23 +31,23 @@ const CotacoesSchema = new Schema({
           require: true,
           match: [/^[A-zÀ-ú /()]+$/, 'O nome do alimento, referênte a cesta básica, só pode conter letras'],
         },
-        variadade:[{
+        variedade: [{
           marca: {
             type: String,
             require: true,
             match: [/^[A-zÀ-ú /()]+$/, 'A marca do alimento, referênte a cesta básica, só pode conter letras'],
-          },
-          quantidade: {
-            type: Number,
-            default: 6.6,
-            match: [/^[0-9]+$/, 'A quantidade do alimento, referênte a cesta básica, só pode conter números'],
-            require: true
           },
           preco: {
             type: Number,
             match: [/^[0-9]+$/, 'O preço do alimento, referênte a cesta básica, só pode conter números'],
           }, _id: false
         }],
+        quantidade: {
+          type: Number,
+          default: 6.6,
+          match: [/^[0-9]+$/, 'A quantidade do alimento, referênte a cesta básica, só pode conter números'],
+          require: true
+        },
         valorMax: {
           type: Number,
           match: [/^[0-9]+$/, 'O valor maximo dos produtos, referêntes a cesta básica, só pode conter números'],
@@ -60,7 +60,7 @@ const CotacoesSchema = new Schema({
           type: Number,
           match: [/^[0-9]+$/, 'O valor Medio dos produtos, referêntes a cesta básica, só pode conter números'],
         },
-    },
+      },
       alimento2: {
         nome: {
           type: String,
@@ -69,23 +69,23 @@ const CotacoesSchema = new Schema({
           require: true,
           match: [/^[A-zÀ-ú /()]+$/, 'O nome do alimento, referênte a cesta básica, só pode conter letras'],
         },
-        variadade:[{
+        variedade: [{
           marca: {
-            type: string,
+            type: String,
             require: true,
             match: [/^[a-zà-ú /()]+$/, 'a marca do alimento, referênte a cesta básica, só pode conter letras'],
           },
-          quantidade: {
+          preco: {
+            type: Number,
+            match: [/^[0-9]+$/, 'O preço do alimento, referênte a cesta básica, só pode conter números'],
+          }, _id: false,
+        }],
+        quantidade: {
           type: Number,
           default: 7.5,
           match: [/^[0-9]+$/, 'A quantidade do alimento, referênte a cesta básica, só pode conter números'],
           require: true
         },
-        preco: {
-          type: Number,
-          match: [/^[0-9]+$/, 'O preço do alimento, referênte a cesta básica, só pode conter números'],
-        },  
-       }],
         valorMax: {
           type: Number,
           match: [/^[0-9]+$/, 'O valor maximo dos produtos, referêntes a cesta básica, só pode conter números'],
@@ -97,7 +97,7 @@ const CotacoesSchema = new Schema({
         valorMedio: {
           type: Number,
           match: [/^[0-9]+$/, 'O valor Medio dos produtos, referêntes a cesta básica, só pode conter números'],
-        },_id: false
+        }, _id: false
       },
       alimento3: {
         nome: {
@@ -107,23 +107,23 @@ const CotacoesSchema = new Schema({
           require: true,
           match: [/^[A-zÀ-ú /()]+$/, 'O nome do alimento, referênte a cesta básica, só pode conter letras'],
         },
-        variadade:[{
+        variedade: [{
           marca: {
-            type: string,
+            type: String,
             require: true,
             match: [/^[a-zà-ú /()]+$/, 'a marca do alimento, referênte a cesta básica, só pode conter letras'],
           },
-          quantidade: {
+          preco: {
+            type: Number,
+            match: [/^[0-9]+$/, 'O preço do alimento, referênte a cesta básica, só pode conter números'],
+          }, _id: false,
+        }],
+        quantidade: {
           type: Number,
           default: 4.5,
           match: [/^[0-9]+$/, 'A quantidade do alimento, referênte a cesta básica, só pode conter números'],
           require: true
         },
-        preco: {
-            type: Number,
-            match: [/^[0-9]+$/, 'O preço do alimento, referênte a cesta básica, só pode conter números'],
-          }, 
-        }],
         valorMax: {
           type: Number,
           match: [/^[0-9]+$/, 'O valor maximo dos produtos, referêntes a cesta básica, só pode conter números'],
@@ -135,9 +135,9 @@ const CotacoesSchema = new Schema({
         valorMedio: {
           type: Number,
           match: [/^[0-9]+$/, 'O valor Medio dos produtos, referêntes a cesta básica, só pode conter números'],
-        },_id: false
-    },
-      
+        }, _id: false
+      },
+
       alimento4: {
         nome: {
           type: String,
@@ -146,23 +146,23 @@ const CotacoesSchema = new Schema({
           require: true,
           match: [/^[A-zÀ-ú /()]+$/, 'O nome do alimento, referênte a cesta básica, só pode conter letras'],
         },
-        variadade:[{
+        variedade: [{
           marca: {
-            type: string,
+            type: String,
             require: true,
             match: [/^[a-zà-ú /()]+$/, 'a marca do alimento, referênte a cesta básica, só pode conter letras'],
           },
-          quantidade: {
+          preco: {
+            type: Number,
+            match: [/^[0-9]+$/, 'O preço do alimento, referênte a cesta básica, só pode conter números'],
+          }, _id: false,
+        }],
+        quantidade: {
           type: Number,
           default: 3,
           match: [/^[0-9]+$/, 'A quantidade do alimento, referênte a cesta básica, só pode conter números'],
           require: true
         },
-        preco: {
-            type: Number,
-            match: [/^[0-9]+$/, 'O preço do alimento, referênte a cesta básica, só pode conter números'],
-          }, 
-        }],
         valorMax: {
           type: Number,
           match: [/^[0-9]+$/, 'O valor maximo dos produtos, referêntes a cesta básica, só pode conter números'],
@@ -174,9 +174,9 @@ const CotacoesSchema = new Schema({
         valorMedio: {
           type: Number,
           match: [/^[0-9]+$/, 'O valor Medio dos produtos, referêntes a cesta básica, só pode conter números'],
-        },_id: false
-    },
-      
+        }, _id: false
+      },
+
       alimento5: {
         nome: {
           type: String,
@@ -185,23 +185,23 @@ const CotacoesSchema = new Schema({
           require: true,
           match: [/^[A-zÀ-ú /()]+$/, 'O nome do alimento, referênte a cesta básica, só pode conter letras'],
         },
-        variadade:[{
+        variedade: [{
           marca: {
-            type: string,
+            type: String,
             require: true,
             match: [/^[a-zà-ú /()]+$/, 'a marca do alimento, referênte a cesta básica, só pode conter letras'],
           },
-          quantidade: {
+          preco: {
+            type: Number,
+            match: [/^[0-9]+$/, 'O preço do alimento, referênte a cesta básica, só pode conter números'],
+          }, _id: false,
+        }],
+        quantidade: {
           type: Number,
           default: 1.5,
           match: [/^[0-9]+$/, 'A quantidade do alimento, referênte a cesta básica, só pode conter números'],
           require: true
         },
-        preco: {
-            type: Number,
-            match: [/^[0-9]+$/, 'O preço do alimento, referênte a cesta básica, só pode conter números'],
-          }, 
-        }],
         valorMax: {
           type: Number,
           match: [/^[0-9]+$/, 'O valor maximo dos produtos, referêntes a cesta básica, só pode conter números'],
@@ -213,7 +213,7 @@ const CotacoesSchema = new Schema({
         valorMedio: {
           type: Number,
           match: [/^[0-9]+$/, 'O valor Medio dos produtos, referêntes a cesta básica, só pode conter números'],
-        },_id: false
+        }, _id: false
       },
       alimento6: {
         nome: {
@@ -223,23 +223,23 @@ const CotacoesSchema = new Schema({
           require: true,
           match: [/^[A-zÀ-ú /()]+$/, 'O nome do alimento, referênte a cesta básica, só pode conter letras'],
         },
-        variadade:[{
+        variedade: [{
           marca: {
-            type: string,
+            type: String,
             require: true,
             match: [/^[a-zà-ú /()]+$/, 'a marca do alimento, referênte a cesta básica, só pode conter letras'],
           },
-          quantidade: {
+          preco: {
+            type: Number,
+            match: [/^[0-9]+$/, 'O preço do alimento, referênte a cesta básica, só pode conter números'],
+          }, _id: false,
+        }],
+        quantidade: {
           type: Number,
           default: 6,
           match: [/^[0-9]+$/, 'A quantidade do alimento, referênte a cesta básica, só pode conter números'],
           require: true
         },
-        preco: {
-            type: Number,
-            match: [/^[0-9]+$/, 'O preço do alimento, referênte a cesta básica, só pode conter números'],
-          }, 
-        }],
         valorMax: {
           type: Number,
           match: [/^[0-9]+$/, 'O valor maximo dos produtos, referêntes a cesta básica, só pode conter números'],
@@ -251,8 +251,8 @@ const CotacoesSchema = new Schema({
         valorMedio: {
           type: Number,
           match: [/^[0-9]+$/, 'O valor Medio dos produtos, referêntes a cesta básica, só pode conter números'],
-        },_id: false
-    },
+        }, _id: false
+      },
       alimento7: {
         nome: {
           type: String,
@@ -261,23 +261,23 @@ const CotacoesSchema = new Schema({
           require: true,
           match: [/^[A-zÀ-ú /()]+$/, 'O nome do alimento, referênte a cesta básica, só pode conter letras'],
         },
-        variadade:[{
+        variedade: [{
           marca: {
-            type: string,
+            type: String,
             require: true,
             match: [/^[a-zà-ú /()]+$/, 'a marca do alimento, referênte a cesta básica, só pode conter letras'],
           },
-          quantidade: {
+          preco: {
+            type: Number,
+            match: [/^[0-9]+$/, 'O preço do alimento, referênte a cesta básica, só pode conter números'],
+          }, _id: false,
+        }],
+        quantidade: {
           type: Number,
           default: 9,
           match: [/^[0-9]+$/, 'A quantidade do alimento, referênte a cesta básica, só pode conter números'],
           require: true
         },
-        preco: {
-            type: Number,
-            match: [/^[0-9]+$/, 'O preço do alimento, referênte a cesta básica, só pode conter números'],
-          }, 
-        }],
         valorMax: {
           type: Number,
           match: [/^[0-9]+$/, 'O valor maximo dos produtos, referêntes a cesta básica, só pode conter números'],
@@ -289,8 +289,8 @@ const CotacoesSchema = new Schema({
         valorMedio: {
           type: Number,
           match: [/^[0-9]+$/, 'O valor Medio dos produtos, referêntes a cesta básica, só pode conter números'],
-        },_id: false
-    },
+        }, _id: false
+      },
       alimento8: {
         nome: {
           type: String,
@@ -299,23 +299,23 @@ const CotacoesSchema = new Schema({
           require: true,
           match: [/^[A-zÀ-ú /()]+$/, 'O nome do alimento, referênte a cesta básica, só pode conter letras'],
         },
-        variadade:[{
+        variedade: [{
           marca: {
-            type: string,
+            type: String,
             require: true,
             match: [/^[a-zà-ú /()]+$/, 'a marca do alimento, referênte a cesta básica, só pode conter letras'],
           },
-          quantidade: {
+          preco: {
+            type: Number,
+            match: [/^[0-9]+$/, 'O preço do alimento, referênte a cesta básica, só pode conter números'],
+          }, _id: false,
+        }],
+        quantidade: {
           type: Number,
           default: 6,
           match: [/^[0-9]+$/, 'A quantidade do alimento, referênte a cesta básica, só pode conter números'],
           require: true
         },
-        preco: {
-            type: Number,
-            match: [/^[0-9]+$/, 'O preço do alimento, referênte a cesta básica, só pode conter números'],
-          }, 
-        }],
         valorMax: {
           type: Number,
           match: [/^[0-9]+$/, 'O valor maximo dos produtos, referêntes a cesta básica, só pode conter números'],
@@ -327,8 +327,8 @@ const CotacoesSchema = new Schema({
         valorMedio: {
           type: Number,
           match: [/^[0-9]+$/, 'O valor Medio dos produtos, referêntes a cesta básica, só pode conter números'],
-        },_id: false
-    },
+        }, _id: false
+      },
       alimento9: {
         nome: {
           type: String,
@@ -337,23 +337,23 @@ const CotacoesSchema = new Schema({
           require: true,
           match: [/^[A-zÀ-ú /()]+$/, 'O nome do alimento, referênte a cesta básica, só pode conter letras'],
         },
-        variadade:[{
+        variedade: [{
           marca: {
-            type: string,
+            type: String,
             require: true,
             match: [/^[a-zà-ú /()]+$/, 'a marca do alimento, referênte a cesta básica, só pode conter letras'],
           },
-          quantidade: {
+          preco: {
+            type: Number,
+            match: [/^[0-9]+$/, 'O preço do alimento, referênte a cesta básica, só pode conter números'],
+          }, _id: false,
+        }],
+        quantidade: {
           type: Number,
           default: 0.6,
           match: [/^[0-9]+$/, 'A quantidade do alimento, referênte a cesta básica, só pode conter números'],
           require: true
         },
-        preco: {
-            type: Number,
-            match: [/^[0-9]+$/, 'O preço do alimento, referênte a cesta básica, só pode conter números'],
-          }, 
-        }],
         valorMax: {
           type: Number,
           match: [/^[0-9]+$/, 'O valor maximo dos produtos, referêntes a cesta básica, só pode conter números'],
@@ -365,8 +365,8 @@ const CotacoesSchema = new Schema({
         valorMedio: {
           type: Number,
           match: [/^[0-9]+$/, 'O valor Medio dos produtos, referêntes a cesta básica, só pode conter números'],
-        },_id: false
-    },
+        }, _id: false
+      },
       alimento10: {
         nome: {
           type: String,
@@ -375,23 +375,23 @@ const CotacoesSchema = new Schema({
           require: true,
           match: [/^[A-zÀ-ú /()]+$/, 'O nome do alimento, referênte a cesta básica, só pode conter letras'],
         },
-        variadade:[{
+        variedade: [{
           marca: {
-            type: string,
+            type: String,
             require: true,
             match: [/^[a-zà-ú /()]+$/, 'a marca do alimento, referênte a cesta básica, só pode conter letras'],
           },
-          quantidade: {
+          preco: {
+            type: Number,
+            match: [/^[0-9]+$/, 'O preço do alimento, referênte a cesta básica, só pode conter números'],
+          }, _id: false,
+        }],
+        quantidade: {
           type: Number,
           default: 90,
           match: [/^[0-9]+$/, 'A quantidade do alimento, referênte a cesta básica, só pode conter números'],
           require: true
         },
-        preco: {
-            type: Number,
-            match: [/^[0-9]+$/, 'O preço do alimento, referênte a cesta básica, só pode conter números'],
-          }, 
-        }],
         valorMax: {
           type: Number,
           match: [/^[0-9]+$/, 'O valor maximo dos produtos, referêntes a cesta básica, só pode conter números'],
@@ -403,8 +403,8 @@ const CotacoesSchema = new Schema({
         valorMedio: {
           type: Number,
           match: [/^[0-9]+$/, 'O valor Medio dos produtos, referêntes a cesta básica, só pode conter números'],
-        },_id: false
-    },
+        }, _id: false
+      },
       alimento11: {
         nome: {
           type: String,
@@ -413,23 +413,23 @@ const CotacoesSchema = new Schema({
           require: true,
           match: [/^[A-zÀ-ú /()]+$/, 'O nome do alimento, referênte a cesta básica, só pode conter letras'],
         },
-        variadade:[{
+        variedade: [{
           marca: {
-            type: string,
+            type: String,
             require: true,
             match: [/^[a-zà-ú /()]+$/, 'a marca do alimento, referênte a cesta básica, só pode conter letras'],
           },
-          quantidade: {
+          preco: {
+            type: Number,
+            match: [/^[0-9]+$/, 'O preço do alimento, referênte a cesta básica, só pode conter números'],
+          }, _id: false,
+        }],
+        quantidade: {
           type: Number,
           default: 3,
           match: [/^[0-9]+$/, 'A quantidade do alimento, referênte a cesta básica, só pode conter números'],
           require: true
         },
-        preco: {
-            type: Number,
-            match: [/^[0-9]+$/, 'O preço do alimento, referênte a cesta básica, só pode conter números'],
-          }, 
-        }],
         valorMax: {
           type: Number,
           match: [/^[0-9]+$/, 'O valor maximo dos produtos, referêntes a cesta básica, só pode conter números'],
@@ -441,8 +441,8 @@ const CotacoesSchema = new Schema({
         valorMedio: {
           type: Number,
           match: [/^[0-9]+$/, 'O valor Medio dos produtos, referêntes a cesta básica, só pode conter números'],
-        },_id: false
-    },
+        }, _id: false
+      },
       alimento12: {
         nome: {
           type: String,
@@ -451,23 +451,23 @@ const CotacoesSchema = new Schema({
           require: true,
           match: [/^[A-zÀ-ú /()]+$/, 'O nome do alimento, referênte a cesta básica, só pode conter letras'],
         },
-        variadade:[{
+        variedade: [{
           marca: {
-            type: string,
+            type: String,
             require: true,
             match: [/^[a-zà-ú /()]+$/, 'a marca do alimento, referênte a cesta básica, só pode conter letras'],
           },
-          quantidade: {
+          preco: {
+            type: Number,
+            match: [/^[0-9]+$/, 'O preço do alimento, referênte a cesta básica, só pode conter números'],
+          }, _id: false,
+        }],
+        quantidade: {
           type: Number,
           default: 4.5,
           match: [/^[0-9]+$/, 'A quantidade do alimento, referênte a cesta básica, só pode conter números'],
           require: true
         },
-        preco: {
-            type: Number,
-            match: [/^[0-9]+$/, 'O preço do alimento, referênte a cesta básica, só pode conter números'],
-          }, 
-        }],
         valorMax: {
           type: Number,
           match: [/^[0-9]+$/, 'O valor maximo dos produtos, referêntes a cesta básica, só pode conter números'],
@@ -479,8 +479,8 @@ const CotacoesSchema = new Schema({
         valorMedio: {
           type: Number,
           match: [/^[0-9]+$/, 'O valor Medio dos produtos, referêntes a cesta básica, só pode conter números'],
-        },_id: false
-    },
+        }, _id: false
+      },
       alimento13: {
         nome: {
           type: String,
@@ -489,23 +489,23 @@ const CotacoesSchema = new Schema({
           require: true,
           match: [/^[A-zÀ-ú /()]+$/, 'O nome do alimento, referênte a cesta básica, só pode conter letras'],
         },
-        variadade:[{
+        variedade: [{
           marca: {
-            type: string,
+            type: String,
             require: true,
             match: [/^[a-zà-ú /()]+$/, 'a marca do alimento, referênte a cesta básica, só pode conter letras'],
           },
-          quantidade: {
+          preco: {
+            type: Number,
+            match: [/^[0-9]+$/, 'O preço do alimento, referênte a cesta básica, só pode conter números'],
+          }, _id: false,
+        }],
+        quantidade: {
           type: Number,
           default: 4.5,
           match: [/^[0-9]+$/, 'A quantidade do alimento, referênte a cesta básica, só pode conter números'],
           require: true
         },
-        preco: {
-            type: Number,
-            match: [/^[0-9]+$/, 'O preço do alimento, referênte a cesta básica, só pode conter números'],
-          }, 
-        }],
         valorMax: {
           type: Number,
           match: [/^[0-9]+$/, 'O valor maximo dos produtos, referêntes a cesta básica, só pode conter números'],
@@ -517,13 +517,13 @@ const CotacoesSchema = new Schema({
         valorMedio: {
           type: Number,
           match: [/^[0-9]+$/, 'O valor Medio dos produtos, referêntes a cesta básica, só pode conter números'],
-        },_id: false
+        }, _id: false
+      },
     },
-  },
-    valorTotal: {
+   /* valorTotal: {
       type: Number,
       match: [/^[0-9]+$/, 'O valor total dos produtos, referêntes a cesta básica, só pode conter números'],
-    },_id: false
+    }, */_id: false
   },
   mes: {
     type: String,
@@ -535,25 +535,34 @@ const CotacoesSchema = new Schema({
   },
 }, { versionKey: false }, { timestamps: true });
 
-
-CotacoesSchema.pre('save', function (next) {
-  /*console.log(this);
-  Object.keys(this._doc).concat(Object.keys(this.cesta.alimentos)).forEach(element => {
-   //console.log(element); 
-  });*/
-  t/*his.cesta.valorTotal = 0; let falso =0;
-  Object.keys(this.cesta.alimentos).forEach(element => {
-   this.cesta.valorTotal += this.cesta.alimentos[element].preco
-   if (!this.cesta.alimentos[element].preco) {falso++}
+function calc(alimentos) {
+  Object.keys(alimentos).forEach(e => {
+    let valor =[]
+    alimentos[e].valorMedio = 0;let falso = 0
+    alimentos[e].variedade.forEach(e2 => {
+      valor.push(e2.preco)
+      alimentos[e].valorMedio += e2.preco
+      if (!e2.preco) { falso++ }
+    });
+    alimentos[e].valorMedio = alimentos[e].valorMedio / ((Object.keys(alimentos[e].variedade)).length - falso)
+    alimentos[e].valorMax = Math.max(...valor)
+    alimentos[e].valorMin = Math.min(...valor)
   });
-  this.cesta.valorMedio = this.cesta.valorTotal / ((Object.keys(this.cesta.alimentos)).length-falso)*/
+  return alimentos
+}
+CotacoesSchema.pre('save', function (next) {
+  this.cesta.alimentos=calc(this.cesta.alimentos)
+  
   next();
 })
 CotacoesSchema.pre('findOneAndUpdate', function (next) {
-  for (let i = 0; i < ((update = Object.keys(this._update)).length - 2); i++) {
+ /* for (let i = 0; i < ((update = Object.keys(this._update)).length - 2); i++) {
     if (this.schema._requiredpaths.indexOf(update[i].toLowerCase()) == -1) {
       next(new Error('Campo "' + update[i] + '" é invalido!'))
     }
+    }*/
+   if (Object.keys(this._update).length>1) {
+    this._update.cesta.alimentos =calc(this._update.cesta.alimentos)
   }
   this.options.runValidators = true;
   next();
