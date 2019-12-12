@@ -520,10 +520,10 @@ const CotacoesSchema = new Schema({
         }, _id: false
       },
     },
-   /* valorTotal: {
+    valorTotal: {
       type: Number,
       match: [/^[0-9]+$/, 'O valor total dos produtos, referêntes a cesta básica, só pode conter números'],
-    }, */_id: false
+    }, _id: false
   },
   mes: {
     type: String,
@@ -535,34 +535,35 @@ const CotacoesSchema = new Schema({
   },
 }, { versionKey: false }, { timestamps: true });
 
-function calc(alimentos) {
-  Object.keys(alimentos).forEach(e => {
-    let valor =[]
-    alimentos[e].valorMedio = 0;let falso = 0
-    alimentos[e].variedade.forEach(e2 => {
+function calc(cesta) {
+cesta.valorTotal = 0
+  Object.keys(cesta.alimentos).forEach(e => {
+    let valor = []
+    cesta.alimentos[e].valorMedio = 0; let falso = 0
+    cesta.alimentos[e].variedade.forEach(e2 => {
       valor.push(e2.preco)
-      alimentos[e].valorMedio += e2.preco
+      cesta.alimentos[e].valorMedio += e2.preco
       if (!e2.preco) { falso++ }
     });
-    alimentos[e].valorMedio = alimentos[e].valorMedio / ((Object.keys(alimentos[e].variedade)).length - falso)
-    alimentos[e].valorMax = Math.max(...valor)
-    alimentos[e].valorMin = Math.min(...valor)
+    cesta.valorTotal += cesta.alimentos[e].valorMedio
+    cesta.alimentos[e].valorMedio = cesta.alimentos[e].valorMedio / ((Object.keys(cesta.alimentos[e].variedade)).length - falso)
+    cesta.alimentos[e].valorMax = Math.max(...valor)
+    cesta.alimentos[e].valorMin = Math.min(...valor)
   });
-  return alimentos
+  return cesta
 }
 CotacoesSchema.pre('save', function (next) {
-  this.cesta.alimentos=calc(this.cesta.alimentos)
-  
+  this.cesta = calc(this.cesta)
   next();
 })
 CotacoesSchema.pre('findOneAndUpdate', function (next) {
- /* for (let i = 0; i < ((update = Object.keys(this._update)).length - 2); i++) {
-    if (this.schema._requiredpaths.indexOf(update[i].toLowerCase()) == -1) {
-      next(new Error('Campo "' + update[i] + '" é invalido!'))
-    }
-    }*/
-   if (Object.keys(this._update).length>1) {
-    this._update.cesta.alimentos =calc(this._update.cesta.alimentos)
+  /* for (let i = 0; i < ((update = Object.keys(this._update)).length - 2); i++) {
+     if (this.schema._requiredpaths.indexOf(update[i].toLowerCase()) == -1) {
+       next(new Error('Campo "' + update[i] + '" é invalido!'))
+     }
+     }*/
+  if (Object.keys(this._update).length > 1) {
+    this._update.cesta = calc(this._update.cesta)
   }
   this.options.runValidators = true;
   next();
